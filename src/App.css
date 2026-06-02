@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body, #root, .App {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hero Section with Fullscreen Cover Background */
+.hero-section {
+  width: 100%;
+  height: 80vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Changed Title Color to a Clean Minimalist White */
+.hero-content {
+  color: #ffffff; 
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 22px;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* Changed Button to Luxury Black and Gold Text */
+.shop-now-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 4px; /* Sleeker modern box-edge */
+  background: #ffffff;
+  color: #111111;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-3px);
+  background: #d4af37; /* Luxe Gold Hover Accent */
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Categories Grid Section Styling */
+.featured-categories {
+  padding: 5rem 6%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+  color: #111;
+  text-transform: uppercase;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 1.8rem;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+/* Changed Category Overlay Hover color to a sophisticated dark tint */
+.category-card:hover .category-overlay {
+  background: rgba(17, 17, 17, 0.85); 
+}
+
+.category-overlay h3 {
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+}

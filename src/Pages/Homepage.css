@@ -1,0 +1,84 @@
+.hero-section {
+  height: 75vh;
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.shop-now-btn {
+  background-color: #fff;
+  color: #111;
+  padding: 1rem 2.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.shop-now-btn:hover {
+  background-color: #ff3e6c;
+  color: #fff;
+}
+
+.featured-categories {
+  padding: 5rem 6%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(32, 41, 218, 0.02);
+}
+
+.category-overlay {
+  background: rgba(0, 0, 0, 0.35);
+  width: 100%;
+  padding: 1.8rem;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+  background: rgba(255, 62, 108, 0.85);
+}
+
+.category-overlay h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}

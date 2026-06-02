@@ -1,0 +1,43 @@
+.dashboard-page {
+  padding: 4rem 6%;
+}
+
+.dashboard-page h1 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.dash-card {
+  background: white;
+  padding: 2rem;
+  border: 1px solid #eee;
+  border-radius: 2px;
+}
+
+.dash-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.user-email {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-top: 1rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ff3e6c;
+  margin-top: 0.5rem;
+}
