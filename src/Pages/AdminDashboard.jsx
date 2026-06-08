@@ -8,7 +8,9 @@ function AdminDashboard({ products, orders, onAddProduct, onUpdateProduct, onDel
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('men');
   const [brand, setBrand] = useState('');
-  const [img, setImg] = useState('https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500');
+  const [img] = useState(
+  'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500'
+);
 
   // Analytical Framework Metrics Parsers
   const aggregateRevenue = orders.reduce((sum, o) => sum + o.grandTotal, 0);

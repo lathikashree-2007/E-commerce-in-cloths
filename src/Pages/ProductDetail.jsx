@@ -7,8 +7,10 @@ function ProductDetail({ products, addToCart, toggleWishlist, wishlist, trackHis
   const [selectedSize, setSelectedSize] = useState('');
 
   useEffect(() => {
-    if (product) trackHistory(product.id);
-  }, [id, product]);
+  if (product) {
+    trackHistory(product.id);
+  }
+}, [id, product, trackHistory]);
 
   if (!product) return <div style={{ padding: '40px 6%' }}>Product architecture not found.</div>;
 
