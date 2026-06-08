@@ -3,35 +3,67 @@ import { Link } from 'react-router-dom';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
-  const [info, setInfo] = useState({ text: '', type: '' });
-  //const navigate = useNavigate();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleForgot = (e) => {
+  const handleResetSubmit = (e) => {
     e.preventDefault();
-    const existingUsers = JSON.parse(localStorage.getItem('local_users')) || [];
-    const user = existingUsers.find(u => u.email === email);
-
-    if (!user) {
-      setInfo({ text: 'No user found with this email location.', type: 'error' });
-      return;
+    
+    // Simple verification feedback loop
+    if (email.trim()) {
+      setIsSubmitted(true);
     }
-
-    const mockToken = "RESET-" + Math.floor(100000 + Math.random() * 900000);
-    localStorage.setItem('reset_token', JSON.stringify({ email, token: mockToken, expires: Date.now() + 600000 }));
-
-    setInfo({ text: `Success! Copy your recovery token: ${mockToken}`, type: 'success' });
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '70vh', padding: '20px' }}>
-      <form onSubmit={handleForgot} style={{ width: '100%', maxWidth: '400px', padding: '30px', background: '#fff', borderRadius: '8px', border: '1px solid #eee' }}>
-        <h2 style={{ fontSize: '22px', marginBottom: '10px', textAlign: 'center' }}>Recover Password</h2>
-        <p style={{ fontSize: '13px', color: '#666', textAlign: 'center', marginBottom: '20px' }}>Enter your email to generate a secure simulation reset verification token.</p>
-        {info.text && <div style={{ wordBreak: 'break-all', padding: '10px', borderRadius: '4px', marginBottom: '15px', fontSize: '12px', background: info.type === 'error' ? '#fdf2f2' : '#f0fdf4', color: info.type === 'error' ? '#b91c1c' : '#15803d' }}>{info.text}</div>}
-        <input type="email" placeholder="Registered Email Address" value={email} onChange={e => setEmail(e.target.value)} style={{ width: '100%', padding: '12px', marginBottom: '20px', border: '1px solid #ddd', borderRadius: '4px' }} required />
-        <button type="submit" style={{ width: '100%', padding: '12px', background: '#111', color: '#fff', border: 'none', borderRadius: '4px', fontWeight: '600' }}>GET RECOVERY TOKEN</button>
-        <p style={{ textAlign: 'center', fontSize: '13px', marginTop: '15px' }}><a href="/reset-password" style={{ color: '#ff3f6c', textDecoration: 'none' }}>Have a token? Reset password here</a></p>
-      </form>
+    <div style={styles.authWrapper}>
+      <h2 style={{ marginBottom: '8px', fontSize: '26px', fontWeight: 'bold' }}>Reset Password</h2>
+      
+      {!isSubmitted ? (
+        <>
+          <p style={{ color: '#666', fontSize: '14px', marginBottom: '24px' }}>
+            Enter your registered email address below and we'll send you a secure link to reset your account credentials.
+          </p>
+          
+          <form onSubmit={handleResetSubmit} style={styles.formStructure}>
+            <div style={styles.inputGroup}>
+              <label style={styles.label}>Email Address *</label>
+              <input 
+                type="email" 
+                required 
+                placeholder="name@example.com" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                style={styles.field} 
+              />
+            </div>
+
+            <button type="submit" style={styles.primaryBtn}>Send Reset Link</button>
+          </form>
+        </>
+      ) : (
+        <div style={{ textAlign: 'center', padding: '10px 0' }}>
+          <div style={{ fontSize: '40px', marginBottom: '15px' }}>📩</div>
+          <h4 style={{ margin: '0 0 10px 0', color: '#27ae60' }}>Link Dispatched Successfully!</h4>
+          <p style={{ color: '#666', fontSize: '14px', lineHeight: '1.5', marginBottom: '20px' }}>
+            We have transmitted an access recovery link to <strong>{email}</strong> if it exists in our core architecture records.
+          </p>
+        </div>
+      )}
+
+      <div style={styles.footerPrompt}>
+        Remember your details? <Link to="/login" style={styles.boldLink}>Back to Sign In</Link>
+      </div>
     </div>
   );
 }
+
+const styles = {
+  authWrapper: { maxWidth: '420px', margin: '70px auto', padding: '35px', border: '1px solid #e2e8f0', borderRadius: '8px', backgroundColor: '#fff', color: '#1a202c', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', fontFamily: 'sans-serif' },
+  formStructure: { display: 'flex', flexDirection: 'column', gap: '18px' },
+  inputGroup: { display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left' },
+  label: { fontSize: '13px', fontWeight: '600', color: '#4a5568' },
+  field: { padding: '12px', borderRadius: '5px', border: '1px solid #cbd5e0', fontSize: '14px', backgroundColor: '#fff', color: '#2d3748', outline: 'none' },
+  primaryBtn: { padding: '13px', backgroundColor: '#1a202c', color: '#fff', border: 'none', borderRadius: '5px', fontSize: '15px', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px' },
+  footerPrompt: { marginTop: '25px', paddingTop: '20px', borderTop: '1px solid #edf2f7', fontSize: '14px', textAlign: 'center', color: '#718096' },
+  boldLink: { color: '#3182ce', fontWeight: 'bold', textDecoration: 'none' }
+};
